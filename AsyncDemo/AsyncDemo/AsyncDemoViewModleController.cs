@@ -9,14 +9,14 @@ namespace AsyncDemo
     class PrimesCalculator : IPrimesCalculator
 
     {
+        // Very good
         public IEnumerable<int> CalcPrimes(int from,int to)
         {
             return Enumerable.Range(from, to - from+1).Where((num) => IsPrime(num));
         }
 
         private bool IsPrime(int num)
-        {
-
+        {            
             if (num <= 1)
             {
                 return false;

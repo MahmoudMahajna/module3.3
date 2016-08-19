@@ -38,12 +38,15 @@ namespace AsyncDemo
                 MessageBox.Show(ex.Message);
             }
         }
+        // Methods names should start with big letter
         public void setResult(IAsyncResult ar)
         {
+            // delete 2 first lines and define calcPrimes as class parameter
             AsyncResult result = (AsyncResult)ar;
             CalcPrimesCaller calcPrimes = (CalcPrimesCaller)result.AsyncDelegate;
             var returnValue = calcPrimes.EndInvoke(ar);
-           returnValue.ToList().ForEach((x) => lstResult.BeginInvoke((Action)(() => lstResult.Items.Add(x))));
+            // The UI Blocked, shouldn't happened
+            returnValue.ToList().ForEach((x) => lstResult.BeginInvoke((Action)(() => lstResult.Items.Add(x))));
         }
     }
 }
